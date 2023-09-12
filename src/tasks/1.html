@@ -1,0 +1,89 @@
+<div class="text-danger p-2"> Real numbers only (Только вещественные числа) </div>
+<form id="form-task-1">
+    <table>
+        <tbody>
+        <tr>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+            <td class='task-1-td'><input type="number" name="0[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+            <td class='task-1-td'><input type="number" name="1[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+            <td class='task-1-td'><input type="number" name="2[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+            <td class='task-1-td'><input type="number" name="3[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+            <td class='task-1-td'><input type="number" name="4[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+            <td class='task-1-td'><input type="number" name="5[]"></td>
+        </tr>
+        <tr>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+            <td class='task-1-td'><input type="number" name="6[]"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<div id="table-result" class="mb-3"></div>
+<button type="button" class="btn btn-primary" onclick="sendData1()">Send</button>
+
+
+<script>
+    async function sendData1() {
+        let request = new FormData(document.getElementById('form-task-1'));
+        window.getDataByAjax('Diagonal', request).then((response) => {
+            let resultElement = document.getElementById('table-result');
+            if (!response) {
+                resultElement.innerHTML = '<div class="text-bg-danger p-2">Sorry, Something went wrong</div>'
+                return;
+            }
+
+            // Мини хак что бы отформатировать json
+            resultElement.innerHTML = '<pre class="p-2">' + JSON.stringify(Object.assign({}, response), null, 4) + '</pre>';
+        });
+    }
+</script>

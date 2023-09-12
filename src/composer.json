@@ -1,0 +1,21 @@
+{
+    "name": "rhzanau/src",
+    "description": "test project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rzhanau",
+            "email": "jobsprofileru@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rzhanau\\Main\\": "lib/"
+        }
+    },
+    "require": {
+        "ext-mysqli": "*",
+        "ext-pdo": "*",
+        "initphp/database": "^2.1"
+    }
+}

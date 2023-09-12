@@ -1,0 +1,32 @@
+<div class="container mb-3">
+    <div id="color-square" class="row row-cols-3">
+
+    </div>
+</div>
+<button type="button" class="btn btn-primary" onclick="sendData3()">Generate</button>
+
+
+<script>
+    async function sendData3() {
+        window.getDataByAjax('Square', {}).then((response) => {
+            let resultElement = document.getElementById('color-square');
+            resultElement.innerText = '';
+
+            if (!response) {
+                resultElement.innerHTML = '<div class="text-bg-danger p-2">Sorry, Something went wrong</div>'
+                return;
+            }
+
+            response.forEach((cellColor)=>{
+                let cell = document.createElement('div');
+                cell.classList.add('col');
+                cell.style.backgroundColor = cellColor;
+                cell.setAttribute('data-bs-toggle', 'tooltip');
+                cell.setAttribute('data-bs-title', 'Color name: ' + cellColor);
+
+                resultElement.appendChild(cell);
+                new bootstrap.Tooltip(cell);
+            })
+        });
+    }
+</script>

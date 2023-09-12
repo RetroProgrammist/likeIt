@@ -1,0 +1,68 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e4130284d30b7a22bb629a37a22dc902",
+    "packages": [
+        {
+            "name": "initphp/database",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InitPHP/Database.git",
+                "reference": "f6c75fd5060630f65622abb312093b8a18422921"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InitPHP/Database/zipball/f6c75fd5060630f65622abb312093b8a18422921",
+                "reference": "f6c75fd5060630f65622abb312093b8a18422921",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InitPHP\\Database\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammet ŞAFAK",
+                    "email": "info@muhammetsafak.com.tr",
+                    "homepage": "https://www.muhammetsafak.com.tr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "InitPHP DB (QueryBuilder, DBAL and ORM) Library",
+            "support": {
+                "issues": "https://github.com/InitPHP/Database/issues",
+                "source": "https://github.com/InitPHP/Database/tree/2.1.1"
+            },
+            "time": "2023-07-30T13:25:26+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-mysqli": "*",
+        "ext-pdo": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

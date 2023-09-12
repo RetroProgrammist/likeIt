@@ -1,0 +1,58 @@
+<div id="brackets">
+
+</div>
+<button type="button" class="btn btn-primary" onclick="addNewRow()">Add new row</button>
+
+
+<script>
+
+    function addNewRow() {
+        let brackets = document.getElementById('brackets');
+        let htmlString = '' +
+            '<div class="row bracket-block">\n' +
+            '        <div class="col-auto position-relative">\n' +
+            '            <input type="text" class="form-control" >\n' +
+            '        </div>\n' +
+            '        <div class="col-auto">\n' +
+            '            <button type="submit" class="btn btn-primary mb-3">Check</button>\n' +
+            '        </div>\n' +
+            '    </div>';
+        let div = document.createElement('div');
+        div.innerHTML = htmlString;
+
+        let block = div.firstChild;
+        let input = block.querySelector('input');
+        let button = block.querySelector('button');
+
+        button.addEventListener('click', (e) => {
+
+            let data = new FormData();
+
+            data.append('brackets', input.value);
+            input.classList.remove('is-invalid', 'is-valid');
+
+            window.getDataByAjax('Brackets', data).then((response) => {
+
+                if (!!response.error) {
+                    input.classList.add('is-invalid');
+                    alert(response.error);
+                    return;
+                }
+
+                if (!!response.status) {
+                    input.classList.add('is-valid');
+                } else {
+                    input.classList.add('is-invalid');
+                }
+            });
+        })
+
+        brackets.appendChild(block)
+    }
+
+    window.addEventListener('load', (event) => {
+        addNewRow();
+    });
+</script>
+
+

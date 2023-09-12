@@ -1,0 +1,31 @@
+/* BVAmbient Style */
+.bvambient_particle {
+    position: absolute;
+    pointer-events: none;
+    transition: top linear, left linear;
+}
+
+/* Nav element */
+/* переменные подтянутся из bootstrap библиотеки, для теста мне нет необходимости гарантировать наличие переменных */
+.nav-link-mock {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-pink);
+    text-decoration: none;
+    background: 0 0;
+    border: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+/*TASK 1*/
+.task-1-td > input {
+    max-width: 50px;
+}
+
+/*TASK 3*/
+#color-square {
+    height: 300px;
+    width: 300px;
+}

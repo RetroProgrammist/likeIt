@@ -1,0 +1,54 @@
+<div class="input-group">
+    <span class="input-group-text">USD</span>
+    <input type="number" id="rate" class="form-control" aria-label="Amount (to the nearest dollar)" step="0.1" max="99999">
+</div>
+<div id="rate-result" class="mb-3"></div>
+
+<button type="button" class="btn btn-primary" onclick="sendData2()">Calculate (js)</button>
+<button type="button" class="btn btn-primary" onclick="sendDataBack2()">Calculate (php)</button>
+
+<script>
+    //Без php
+    function sendData2() {
+        let resultElement = document.getElementById('rate-result');
+        resultElement.innerText = ''
+        fetch('https://api.nbrb.by/exrates/rates/USD?parammode=2', {})
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                if (!data.Cur_OfficialRate) {
+                    resultElement.innerHTML = '<div class="text-bg-danger p-2">Sorry, Something went wrong</div>'
+                    return;
+                }
+
+                let rate = document.getElementById('rate').value;
+                if (rate > 99999) {
+                    resultElement.innerHTML = '<div class="text-bg-danger p-2">The number should be less than 100 000</div>'
+                    return;
+                }
+
+                resultElement.innerHTML = '<div class="text-bg-success p-2">' + rate * data.Cur_OfficialRate + '<span> BYN</span></div>';
+            });
+    }
+
+    // C использованием php
+    function sendDataBack2() {
+        let resultElement = document.getElementById('rate-result');
+        resultElement.innerText = ''
+        window.getDataByAjax('Rate', {}).then((response) => {
+            if (!response.Cur_OfficialRate) {
+                resultElement.innerHTML = '<div class="text-bg-danger p-2">Sorry, Something went wrong</div>'
+                return;
+            }
+
+            let rate = document.getElementById('rate').value;
+            if (rate > 99999) {
+                resultElement.innerHTML = '<div class="text-bg-danger p-2">The number should be less than 100 000</div>'
+                return;
+            }
+
+            resultElement.innerHTML = '<div class="text-bg-success p-2">' + rate * response.Cur_OfficialRate + '<span> BYN</span></div>';
+        });
+    }
+</script>
